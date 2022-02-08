@@ -12,7 +12,7 @@ class TestController extends AbstractController
     */
     public function index() 
     {
-        $repo = $this->getDoctrine()->getRepository('Product::class');
+        $repo = $this->getDoctrine()->getRepository(Products::class);
         $obj = $repo->findAll();
 
         return $this->render('test/index.html.twig', ['obj' => $obj]);

@@ -21,4 +21,3 @@ class Products
         return $this->id;
     }
 }
-?>
