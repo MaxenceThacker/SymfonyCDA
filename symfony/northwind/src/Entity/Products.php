@@ -38,23 +38,24 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="SupplierID", type="integrer")
+    * @ORM\ManyToOne(targetEntity="Suppliers")
+    * @ORM\JoinColumn(name="SupplierId", referencedColumnName="SupplierId", fetch="EAGER")
     */
-    private $supplierId;
+    private $suppliers;
 
-    public function getSupplierId(): ?int
+    public function getSuppliers()
     {
-        return $this->$supplierId;
+        return $this->$suppliers;
     }
     
-    public function setSupplierId(int $supplierId): self
+    public function setSuppliers(?Suppliers $suppliers): self
     {
-        $this->supplierId = $supplierId;
+        $this->suppliers = $suppliers;
         return $this;
     }
 
     /**
-    * @ORM\Column(name="CategoryID", type="integrer")
+    * @ORM\Column(name="CategoryID", type="integer")
     */
     private $categoryId;
 
@@ -86,7 +87,7 @@ class Products
     }
     
     /**
-    * @ORM\Column(name="UnitPrice", type="decimal", precision=10, scale=2, nullable=false)
+    * @ORM\Column(name="UnitPrice", type="decimal", precision=10, scale=2)
     */
     private $unitPrice;
 
@@ -102,7 +103,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="UnitsInStock", type="smallint", nullable=false)
+    * @ORM\Column(name="UnitsInStock", type="smallint")
     */
     private $unitsInStock;
 
@@ -118,7 +119,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="UnitsOnOrder", type="smallint", nullable=false)
+    * @ORM\Column(name="UnitsOnOrder", type="smallint")
     */
     private $unitsOnOrder;
 
@@ -134,7 +135,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="ReorderLevel", type="smallint", nullable=false)
+    * @ORM\Column(name="ReorderLevel", type="smallint")
     */
     private $reorderLevel;
 
