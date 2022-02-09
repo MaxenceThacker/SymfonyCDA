@@ -38,7 +38,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="SupplierID", type="integrer", nullable=false)
+    * @ORM\Column(name="SupplierID", type="integrer")
     */
     private $supplierId;
 
@@ -54,7 +54,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="CategoryID", type="integrer", nullable=false)
+    * @ORM\Column(name="CategoryID", type="integrer")
     */
     private $categoryId;
 
@@ -70,7 +70,7 @@ class Products
     }
 
     /**
-    * @ORM\Column(name="QuantityPerUnit", type="string", length=20, nullable=false)
+    * @ORM\Column(name="QuantityPerUnit", type="string", length=20)
     */
     private $quantityPerUnit;
 
@@ -98,6 +98,70 @@ class Products
     public function setUnitPrice(string $unitPrice): self
     {
         $this->unitPrice = $unitPrice;
+        return $this;
+    }
+
+    /**
+    * @ORM\Column(name="UnitsInStock", type="smallint", nullable=false)
+    */
+    private $unitsInStock;
+
+    public function getUnitsInStock(): ?int
+    {
+        return $this->unitsInStock;
+    }
+    
+    public function setUnitsInStock(int $unitsInStock): self
+    {
+        $this->unitsInStock = $unitsInStock;
+        return $this;
+    }
+
+    /**
+    * @ORM\Column(name="UnitsOnOrder", type="smallint", nullable=false)
+    */
+    private $unitsOnOrder;
+
+    public function getUnitsOnOrder(): ?int
+    {
+        return $this->unitsOnOrder;
+    }
+    
+    public function setUnitsOnOrder(int $unitsOnOrder): self
+    {
+        $this->unitsOnOrder = $unitsOnOrder;
+        return $this;
+    }
+
+    /**
+    * @ORM\Column(name="ReorderLevel", type="smallint", nullable=false)
+    */
+    private $reorderLevel;
+
+    public function getReorderLevel(): ?int
+    {
+        return $this->reorderLevel;
+    }
+    
+    public function setReorderLevel(int $reorderLevel): self
+    {
+        $this->reorderLevel = $reorderLevel;
+        return $this;
+    }
+
+    /**
+    * @ORM\Column(name="Discontinued", type="boolean", nullable=false)
+    */
+    private $discontinued;
+
+    public function getDiscontinued(): ?bool
+    {
+        return $this->discontinued;
+    }
+    
+    public function setDiscontinued(bool $discontinued): self
+    {
+        $this->discontinued = $discontinued;
         return $this;
     }
 }
