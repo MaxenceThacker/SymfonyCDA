@@ -6,6 +6,7 @@ use App\Repository\CustomersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CustomersRepository::class)
@@ -26,8 +27,13 @@ class Customers
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
      */
-    private $CompanyName;
+    protected $CompanyName;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)

@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OrderDetailsController!{% endblock %}
+{% block title %}OrderDetails index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>OrderDetails index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UnitPrice</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order_detail in order_details %}
+            <tr>
+                <td>{{ order_detail.id }}</td>
+                <td>{{ order_detail.UnitPrice }}</td>
+                <td>{{ order_detail.Quantity }}</td>
+                <td>{{ order_detail.Discount }}</td>
+                <td>
+                    <a href="{{ path('order_details_show', {'id': order_detail.id}) }}">show</a>
+                    <a href="{{ path('order_details_edit', {'id': order_detail.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/59011-07-11/Documents/SymfonyCDA/symfony/northwindAlt/src/Controller/OrderDetailsController.php'|file_link(0) }}">src/Controller/OrderDetailsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/59011-07-11/Documents/SymfonyCDA/symfony/northwindAlt/templates/order_details/index.html.twig'|file_link(0) }}">templates/order_details/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('order_details_new') }}">Create new</a>
 {% endblock %}
